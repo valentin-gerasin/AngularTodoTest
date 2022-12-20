@@ -1,3 +1,8 @@
+1. Install dependencies - npm i
+2. Run server - npm run server
+3. To run project - npm start
+4. To run test - ng test 
+
 # AngularTodoTest
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.4.

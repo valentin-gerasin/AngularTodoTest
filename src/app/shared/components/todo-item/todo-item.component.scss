@@ -1,0 +1,71 @@
+@import "src/assets/scss/variables";
+
+.todo-item {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-width: 460px;
+  max-width: 700px;
+  width: 100%;
+  min-height: 60px;
+  border-radius: 10px;
+  color: $base-white;
+  background-color: $todo-item-background;
+  border: 2px solid $todo-title-input;
+  margin: 10px auto;
+  padding: 10px;
+
+  &.done {
+    .todo-item-text {
+      text-decoration: line-through;
+    }
+
+    .todo-item-status {
+      mat-icon {
+        color: $base-green !important;
+      }
+    }
+  }
+
+  &-order {
+    font-size: 20px;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &-text {
+    flex: 1 0 auto;
+    padding-left: 10px;
+  }
+
+  &-input {
+    flex: 1 0 auto;
+  }
+
+  &-status {
+    margin-right: 10px;
+    padding-left: 10px;
+
+    mat-icon {
+      color: red;
+      cursor: pointer;
+    }
+  }
+
+  &-actions {
+    min-width: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .actions-item {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .actions-item:last-child {
+      margin-right: 0;
+    }
+  }
+}

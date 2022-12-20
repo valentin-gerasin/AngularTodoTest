@@ -1,0 +1,19 @@
+<div class="todo-item" [class.done]="todoItem.isDone">
+  <div *ngIf="order" class="todo-item0order">
+    <p>{{ order }}</p>
+  </div>
+  <div class="todo-item-text">{{ todoItem.text }}</div>
+  <div class="todo-item-text">{{ todoItem.createdAt | date : "medium" }}</div>
+  <div class="todo-item-status">
+    <mat-icon>{{ todoItem.isDone ? "done" : "close" }}</mat-icon>
+  </div>
+  <div *ngIf="isShowView" class="todo-item-actions">
+    <button
+      [routerLink]="['/todo', todoItem.id]"
+      mat-raised-button
+      color="primary"
+    >
+      View info
+    </button>
+  </div>
+</div>

@@ -1,0 +1,67 @@
+<div *ngIf="todoItem; else notFound" class="todo-page">
+  <button [routerLink]="['/']" mat-raised-button color="primary">
+    Go back to the list
+  </button>
+  <div class="todo-page-header">
+    <ng-container *ngIf="isEditState">
+      <button
+        class="header-item"
+        mat-raised-button
+        color="primary"
+        (click)="saveData()"
+      >
+        Save
+      </button>
+    </ng-container>
+    <ng-container *ngIf="!isEditState">
+      <button
+        class="header-item"
+        mat-raised-button
+        color="primary"
+        (click)="toggleEditState()"
+      >
+        Edit
+      </button>
+      <button
+        class="header-item"
+        mat-raised-button
+        color="warn"
+        (click)="openDeleteDialog()"
+      >
+        Delete
+      </button>
+    </ng-container>
+    <button
+      class="header-item"
+      mat-raised-button
+      color="primary"
+      (click)="toggleDoneState()"
+    >
+      Change Done State
+    </button>
+  </div>
+  <div
+    *ngIf="isEditState"
+    [formGroup]="infoForm"
+    class="todo-page-editable-form"
+  >
+    <mat-form-field class="example-full-width">
+      <mat-label>Todo text</mat-label>
+      <input matInput formControlName="text" />
+    </mat-form-field>
+  </div>
+  <div *ngIf="todoItem" class="todo-page-content">
+    <app-todo-item [todoItem]="todoItem"></app-todo-item>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <div class="not-found">
+    <div class="not-found-message">
+      Sorry, the element with this identifier was not found
+    </div>
+    <div class="not-found-action">
+      <button mat-raised-button color="primary">Go to Todo-List</button>
+    </div>
+  </div>
+</ng-template>

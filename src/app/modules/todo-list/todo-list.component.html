@@ -1,0 +1,34 @@
+<div class="todo-list" *ngIf="todoList.length; else loadingList">
+  <div class="todo-list-add-form" [formGroup]="todoForm">
+    <mat-form-field class="form-field">
+      <mat-label>Todo title</mat-label>
+      <input matInput formControlName="text" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="addTodoItem()">
+      Add new todo
+    </button>
+  </div>
+  <div class="todo-list-sort">
+    <mat-form-field appearance="fill">
+      <mat-label>Sort by</mat-label>
+      <mat-select [formControl]="sortControl">
+        <mat-option value="Created">Created</mat-option>
+        <mat-option value="Updated">Updated</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div class="todo-list-content">
+    <app-todo-item
+      *ngFor="let todo of todoList; index as i"
+      [order]="i + 1"
+      [isShowView]="true"
+      [todoItem]="todo"
+    ></app-todo-item>
+  </div>
+</div>
+
+<ng-template #loadingList>
+  <div class="todo-list-loader">
+    <app-loader></app-loader>
+  </div>
+</ng-template>
